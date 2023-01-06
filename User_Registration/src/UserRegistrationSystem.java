@@ -7,7 +7,7 @@ public class UserRegistrationSystem {
     static String firstNameRegex = "^[A-Z]{1}[a-z]{3,}$";
     static String lastNameRegex = "^[A-Z]{1}[a-z]{3,}$";
     static String emailRegexPattern = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
-
+    static String mobileNumberRegexPattern = "^[9,1]{2}?[0-9]{10}$";
     //UC1- Method to validate First Name
 
     public static void validateFirstName() {
@@ -55,10 +55,26 @@ public class UserRegistrationSystem {
             System.out.println("Mail ID is Invalid");
         }
     }
+    // UC4 - Method to Validate MobileNumber
+
+    public static void validateMobileNumber() {
+        System.out.println("Enter Mobile Number :- ");
+        Scanner sc = new Scanner(System.in);
+        String mobileNumber = sc.next();
+        Pattern pattern = Pattern.compile(mobileNumberRegexPattern);
+        Matcher matcher = pattern.matcher(mobileNumber);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println("Mobile Number is Valid");
+        } else {
+            System.out.println("Mobile Number is Invalid");
+        }
+    }
 
     public static void main(String[] args) {
         validateFirstName();
         validateLastName();
         validateMail();
+        validateMobileNumber();
     }
 }
