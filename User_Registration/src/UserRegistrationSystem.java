@@ -72,8 +72,8 @@ public class UserRegistrationSystem {
         }
     }
 
-    // UC5- Rule4 -method to validate password of minimum 8 characters with must 1 special character
-    public static void validatePasswordRule4() {
+    // UC5- method to validate password of minimum 8 characters
+    public static void validatePasswordRule() {
         System.out.print("Enter Password :- ");
         Scanner sc = new Scanner(System.in);
         String passWord = sc.next();
@@ -88,10 +88,17 @@ public class UserRegistrationSystem {
     }
 
     public static void main(String[] args) {
-        validateFirstName();
-        validateLastName();
         validateMail();
-        validateMobileNumber();
-        validatePasswordRule4();
     }
 }
+
+/* A. Valid Emails
+• 1. abc@yahoo.com,
+• 2. abc-100@yahoo.com,
+• 3. abc.100@yahoo.com
+• 2. abc111@abc.com,
+• 4. abc-100@abc.net,
+• 5. abc.100@abc.com.au
+• 6. abc@1.com,
+• 7. abc@gmail.com.com
+• 8. abc+100@gmail.com */
