@@ -6,6 +6,7 @@ public class UserRegistrationSystem {
     //declaring Patterns
     static String firstNameRegex = "^[A-Z]{1}[a-z]{3,}$";
     static String lastNameRegex = "^[A-Z]{1}[a-z]{3,}$";
+    static String emailRegexPattern = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
 
     //UC1- Method to validate First Name
 
@@ -39,8 +40,25 @@ public class UserRegistrationSystem {
         }
     }
 
+    //UC3- Method to validate Email
+
+    public static void validateMail() {
+        System.out.println("Enter mail ID :- ");
+        Scanner sc = new Scanner(System.in);
+        String eMailID = sc.nextLine();
+        Pattern pattern = Pattern.compile(emailRegexPattern);
+        Matcher matcher = pattern.matcher(eMailID);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println("Mail ID is Valid");
+        } else {
+            System.out.println("Mail ID is Invalid");
+        }
+    }
+
     public static void main(String[] args) {
         validateFirstName();
         validateLastName();
+        validateMail();
     }
 }
