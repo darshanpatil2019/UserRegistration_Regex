@@ -8,6 +8,7 @@ public class UserRegistrationSystem {
     static String lastNameRegex = "^[A-Z]{1}[a-z]{3,}$";
     static String emailRegexPattern = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
     static String mobileNumberRegexPattern = "^[9,1]{2}?[0-9]{10}$";
+    static String passwordRegexPatternRule1 = "^[A-Z]{1,}[a-z0-9]{7,}$";
     //UC1- Method to validate First Name
 
     public static void validateFirstName() {
@@ -71,10 +72,26 @@ public class UserRegistrationSystem {
         }
     }
 
+    // UC5- Rule2 -method to validate password of minimum 8 characters with 1 upperCase Letter
+    public static void validatePasswordRule2() {
+        System.out.print("Enter Password :- ");
+        Scanner sc = new Scanner(System.in);
+        String passWord = sc.next();
+        Pattern pattern = Pattern.compile(passwordRegexPatternRule1);
+        Matcher matcher = pattern.matcher(passWord);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println("Password is Valid");
+        } else {
+            System.out.println("Password is Invalid");
+        }
+    }
+
     public static void main(String[] args) {
         validateFirstName();
         validateLastName();
         validateMail();
         validateMobileNumber();
+        validatePasswordRule2();
     }
 }
