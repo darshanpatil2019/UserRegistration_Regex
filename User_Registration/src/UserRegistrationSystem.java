@@ -8,7 +8,7 @@ public class UserRegistrationSystem {
     static String lastNameRegex = "^[A-Z]{1}[a-z]{3,}$";
     static String emailRegexPattern = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$";
     static String mobileNumberRegexPattern = "^[9,1]{2}?[0-9]{10}$";
-    static String passwordRegexPatternRule3 = "^[A-Z]{1,}[0-9]{1,}[a-z]{6,}$";
+    static String passwordRegexPatternRule4 = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()<>]).{8,}$";
     //UC1- Method to validate First Name
 
     public static void validateFirstName() {
@@ -72,12 +72,12 @@ public class UserRegistrationSystem {
         }
     }
 
-    // UC5- Rule3 -method to validate password of minimum 8 characters with 1 Numeric character
-    public static void validatePasswordRule3() {
+    // UC5- Rule4 -method to validate password of minimum 8 characters with must 1 special character
+    public static void validatePasswordRule4() {
         System.out.print("Enter Password :- ");
         Scanner sc = new Scanner(System.in);
         String passWord = sc.next();
-        Pattern pattern = Pattern.compile(passwordRegexPatternRule3);
+        Pattern pattern = Pattern.compile(passwordRegexPatternRule4);
         Matcher matcher = pattern.matcher(passWord);
         boolean result = matcher.matches();
         if (result) {
@@ -92,6 +92,6 @@ public class UserRegistrationSystem {
         validateLastName();
         validateMail();
         validateMobileNumber();
-        validatePasswordRule3();
+        validatePasswordRule4();
     }
 }
